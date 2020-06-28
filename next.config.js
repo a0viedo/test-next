@@ -2,6 +2,7 @@ const PacktrackerPlugin = require('@packtracker/webpack-plugin')
 
 module.exports = {
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    console.log('*******', isServer, process.env.GITHUB_EVENT_PATH);
     if (!isServer && process.env.GITHUB_EVENT_PATH) {
       const event = require(process.env.GITHUB_EVENT_PATH)
       config.plugins.push(
